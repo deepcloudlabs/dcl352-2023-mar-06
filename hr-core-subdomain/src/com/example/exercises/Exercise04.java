@@ -6,6 +6,7 @@ import com.example.hr.domain.FiatCurrency;
 
 public class Exercise04 {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Integer i = Integer.valueOf(42);
 		var numbers = List.of(4,8,15,16,23,42);

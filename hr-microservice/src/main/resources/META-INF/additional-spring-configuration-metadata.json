@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "hrEventTopic",
+    "type": "java.lang.String",
+    "description": "A description for 'hrEventTopic'"
+  },
+  {
+    "name": "hrEventTopic",
+    "type": "java.lang.String",
+    "description": "A description for 'hrEventTopic'"
+  }
+]}

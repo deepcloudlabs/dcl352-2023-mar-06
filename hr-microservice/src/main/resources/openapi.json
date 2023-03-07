@@ -1,0 +1,227 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+		"title": "OpenAPI definition",
+		"version": "v0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8100/hr/api/v1",
+			"description": "Generated server url"
+		}
+	],
+	"paths": {
+		"/employees": {
+			"post": {
+				"tags": [
+					"hr-rest-controller"
+				],
+				"operationId": "hireEmployee",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/HireEmployeeRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/HireEmployeeResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/employees/{kimlikNo}": {
+			"get": {
+				"tags": [
+					"hr-rest-controller"
+				],
+				"operationId": "findEmployee",
+				"parameters": [
+					{
+						"name": "kimlikNo",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EmployeeResponse"
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"hr-rest-controller"
+				],
+				"operationId": "fireEmployee",
+				"parameters": [
+					{
+						"name": "kimlikNo",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/EmployeeResponse"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"HireEmployeeRequest": {
+				"type": "object",
+				"properties": {
+					"identity": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"iban": {
+						"type": "string"
+					},
+					"salary": {
+						"type": "number",
+						"format": "double"
+					},
+					"currency": {
+						"type": "string",
+						"enum": [
+							"TL",
+							"EUR",
+							"USD"
+						]
+					},
+					"birthYear": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"photo": {
+						"type": "string"
+					},
+					"departments": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"SALES",
+								"FINANCE",
+								"HR",
+								"IT"
+							]
+						}
+					},
+					"jobStyle": {
+						"type": "string",
+						"enum": [
+							"PART_TIME",
+							"FULL_TIME",
+							"INTERN"
+						]
+					}
+				}
+			},
+			"HireEmployeeResponse": {
+				"type": "object",
+				"properties": {
+					"status": {
+						"type": "string"
+					}
+				}
+			},
+			"EmployeeResponse": {
+				"type": "object",
+				"properties": {
+					"identity": {
+						"type": "string"
+					},
+					"firstName": {
+						"type": "string"
+					},
+					"lastName": {
+						"type": "string"
+					},
+					"iban": {
+						"type": "string"
+					},
+					"salary": {
+						"type": "number",
+						"format": "double"
+					},
+					"currency": {
+						"type": "string",
+						"enum": [
+							"TL",
+							"EUR",
+							"USD"
+						]
+					},
+					"birthYear": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"photo": {
+						"type": "string"
+					},
+					"departments": {
+						"type": "array",
+						"items": {
+							"type": "string",
+							"enum": [
+								"SALES",
+								"FINANCE",
+								"HR",
+								"IT"
+							]
+						}
+					},
+					"jobStyle": {
+						"type": "string",
+						"enum": [
+							"PART_TIME",
+							"FULL_TIME",
+							"INTERN"
+						]
+					}
+				}
+			}
+		}
+	}
+}
