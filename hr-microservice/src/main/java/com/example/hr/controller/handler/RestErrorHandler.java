@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.example.hr.application.business.exception.EmployeeAlreadyExists;
+import com.example.hr.application.business.exception.EmployeeNotFound;
 import com.example.hr.dto.error.ErrorMessage;
 
 @RestControllerAdvice
@@ -36,6 +38,18 @@ public class RestErrorHandler {
 	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorMessage handleException(Exception e) {
+		return new ErrorMessage(e.getMessage(),"Bad Request");                         
+	}
+	
+	@ExceptionHandler(EmployeeNotFound.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public ErrorMessage handleEmployeeNotFound(EmployeeNotFound e) {
+		return new ErrorMessage(e.getMessage(),"Bad Request");                         
+	}
+	
+	@ExceptionHandler(EmployeeAlreadyExists.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorMessage handleEmployeeAlreadyExists(EmployeeAlreadyExists e) {
 		return new ErrorMessage(e.getMessage(),"Bad Request");                         
 	}
 	

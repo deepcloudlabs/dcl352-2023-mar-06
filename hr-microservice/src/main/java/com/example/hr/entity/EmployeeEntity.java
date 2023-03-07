@@ -7,6 +7,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -37,7 +38,7 @@ public class EmployeeEntity {
 	@Column(columnDefinition = "longblob")
 	private byte[] photo;
 	@Enumerated(EnumType.ORDINAL)
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<Department> departments;
 	@Enumerated(EnumType.ORDINAL)
 	private JobStyle jobStyle;
